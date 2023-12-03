@@ -34,4 +34,5 @@ public class UserFundingRequestDetailsDto {
      private String comment;
      private String status; // submitted, screening, investorReview, inprocess, rejected, approved
      private String eligibleAmtByInvestor;
+     private int ratingFrom5;
 }
