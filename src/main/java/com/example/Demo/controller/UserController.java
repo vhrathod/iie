@@ -2,7 +2,6 @@ package com.example.Demo.controller;
 
 import com.example.Demo.Dto.*;
 import com.example.Demo.Entity.UserEntity;
-import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Repository.UserRepository;
 import com.example.Demo.Service.UserService;
@@ -10,7 +9,6 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,10 +31,8 @@ public class UserController {
         return responseEntity;
     }
 
-
     @PostMapping("/validate-otp")
     public ResponseEntity<Boolean> validateOtp(@RequestBody UserOtp userOpt){
-
         Optional<UserEntity> ue= userRepository.findByUsername(userOpt.getUserName());
         UserEntity u=ue.get();
         Boolean valid=userOpt.getOtp().equals(u.getOtp());
@@ -47,20 +43,34 @@ public class UserController {
     @PostMapping("/fetchAllRequest")
     @SneakyThrows
     public ResponseEntity<List<UserRequestProjection>> fetchAllRequest(@RequestBody @Valid FetchRequest fetchRequest){
-        userRepository.findByUsername(fetchRequest.getUsername()).orElseThrow(
-                ()->new NotFoundException("User not found with username - "+fetchRequest.getUsername()));
+        validateUserPresent(fetchRequest.getUsername());
         List<UserRequestProjection> list=userService.getAllRequestByUsername(fetchRequest.getUsername());
         return ResponseEntity.ok(list);
     }
+
     @PostMapping("/fetchRequest")
     @SneakyThrows
     public ResponseEntity<UserFundingRequestDetailsDto> fetchRequest(@RequestBody @Valid FetchRequest fetchRequest){
-        userRepository.findByUsername(fetchRequest.getUsername()).orElseThrow(
-                ()->new NotFoundException("User not found with username - "+fetchRequest.getUsername()));
+        validateUserPresent(fetchRequest.getUsername());
         if(fetchRequest.getNameOfIdeaOrStartup()==null && fetchRequest.getUuid()==null){
             throw new NotFoundException("NameOfIdeaOrStartup or UUID is required");
         }
         UserFundingRequestDetailsDto dto=userService.getRequestByUserAndIdeaName(fetchRequest);
         return ResponseEntity.ok(dto);
     }
+    @PostMapping("/fetchRequest")
+    @SneakyThrows
+    public ResponseEntity<?> saveFundRequest(@RequestBody @Valid UserFundingRequestDetailsDto dto){
+        validateUserPresent(dto.getUsername());
+        dto=userService.saveFundRequest(dto);
+        return ResponseEntity.ok(dto);
+    }
+
+
+    @SneakyThrows
+    private void validateUserPresent(String username)  {
+        userRepository.findByUsername(username).orElseThrow(
+                ()->new NotFoundException("User not found with username - "+ username));
+    }
+
 }

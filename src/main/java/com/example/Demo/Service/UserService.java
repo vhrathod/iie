@@ -14,4 +14,6 @@ public interface UserService {
     List<UserRequestProjection> getAllRequestByUsername(String username);
 
     UserFundingRequestDetailsDto getRequestByUserAndIdeaName(FetchRequest fetchRequest);
+
+    UserFundingRequestDetailsDto saveFundRequest(UserFundingRequestDetailsDto dto);
 }

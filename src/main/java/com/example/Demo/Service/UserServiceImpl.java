@@ -69,5 +69,11 @@ public class UserServiceImpl implements UserService {
         return userFundingRequestDetails.toDto();
     }
 
+    @Override
+    public UserFundingRequestDetailsDto saveFundRequest(UserFundingRequestDetailsDto dto) {
+        UserFundingRequestDetails userFundingRequestDetails=dto.toEntity();
+        return userFundingRequestDetailsRepository.save(userFundingRequestDetails).toDto();
+    }
+
 
 }
