@@ -1,7 +1,6 @@
 package com.example.Demo.controller;
 
-import com.example.Demo.Dto.StudentFundingRequestDetailsDto;
-import com.example.Demo.Entity.UniversityToUniversityEMailMapper;
+import com.example.Demo.Dto.UserFundingRequestDetailsDto;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Exception.ProcessingException;
@@ -38,7 +37,7 @@ public class FundRequestController {
     UniversityTouniversityEmailMapperRepository universityTouniversityEmailMapperRepository;
 
     @PostMapping("/request")
-    public ResponseEntity<String> IntitateFundingProcess(@RequestBody StudentFundingRequestDetailsDto fundRequest) throws ProcessingException {
+    public ResponseEntity<String> IntitateFundingProcess(@RequestBody UserFundingRequestDetailsDto fundRequest) throws ProcessingException {
         try {
 
            UserEntity userEntity= studentFundRequest.validateRequestAndSendUniName(fundRequest);

@@ -23,7 +23,6 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/create")
     public ResponseEntity<String> createAccount(@Valid @RequestBody UserDto userDto){
          String result= userService.createAccount(userDto);
@@ -32,7 +31,6 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/validate-otp")
     public ResponseEntity<Boolean> validateOtp(@RequestBody UserOtp userOpt){
 

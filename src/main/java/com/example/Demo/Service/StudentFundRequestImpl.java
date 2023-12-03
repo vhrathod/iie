@@ -1,7 +1,7 @@
 package com.example.Demo.Service;
 
-import com.example.Demo.Dto.StudentFundingRequestDetailsDto;
-import com.example.Demo.Entity.StudentFundingRequestDetails;
+import com.example.Demo.Dto.UserFundingRequestDetailsDto;
+import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Repository.StudentFundingRequestDetailsRepository;
@@ -21,12 +21,12 @@ public class StudentFundRequestImpl implements StudentFundRequest{
     StudentFundingRequestDetailsRepository studentFundingRequestDetailsRepository;
 
     @Override
-    public UserEntity validateRequestAndSendUniName(StudentFundingRequestDetailsDto studentFundingRequestDetailsDto) throws NotFoundException {
+    public UserEntity validateRequestAndSendUniName(UserFundingRequestDetailsDto studentFundingRequestDetailsDto) throws NotFoundException {
         Optional<UserEntity> uE = userRepository.findByUsername(studentFundingRequestDetailsDto.getUsername());
         if(!uE.isPresent())
             throw new NotFoundException("User not found!!");
 
-        StudentFundingRequestDetails sfrd=new StudentFundingRequestDetails();
+        UserFundingRequestDetails sfrd=new UserFundingRequestDetails();
         sfrd.setFundingAmount(studentFundingRequestDetailsDto.getFundingAmount());
         sfrd.setFundingReason(studentFundingRequestDetailsDto.getFundingReason());
         sfrd.setUsername(studentFundingRequestDetailsDto.getUsername());

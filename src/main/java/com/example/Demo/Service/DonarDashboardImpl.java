@@ -1,7 +1,7 @@
 package com.example.Demo.Service;
 
 import com.example.Demo.Dto.DonarDashboardInfoDTO;
-import com.example.Demo.Entity.StudentFundingRequestDetails;
+import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Exception.ProcessingException;
 import com.example.Demo.Repository.StudentFundingRequestDetailsRepository;
@@ -25,9 +25,9 @@ public class DonarDashboardImpl implements DonarDashboard{
     @Override
     public List<DonarDashboardInfoDTO> getAllELigibleStudents(String status) {
 
-        List<StudentFundingRequestDetails> studentFundingRequestDetails=studentFundingRequestDetailsRepository.findAllByStatus(status);
+        List<UserFundingRequestDetails> studentFundingRequestDetails=studentFundingRequestDetailsRepository.findAllByStatus(status);
 
-        List<String> emaiIds=studentFundingRequestDetails.stream().map(StudentFundingRequestDetails::getUsername).collect(Collectors.toList());
+        List<String> emaiIds=studentFundingRequestDetails.stream().map(UserFundingRequestDetails::getUsername).collect(Collectors.toList());
 
         List<UserEntity> userEntities=userRepository.findAllByUserName(emaiIds);
 

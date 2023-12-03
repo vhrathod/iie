@@ -2,7 +2,6 @@ package com.example.Demo.controller;
 
 import com.example.Demo.Dto.DonarDashboardInfoDTO;
 import com.example.Demo.Dto.RecordsDto;
-import com.example.Demo.Entity.StudentFundingRequestDetails;
 import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Repository.StudentFundingRequestDetailsRepository;
 import com.example.Demo.Service.DonarDashboard;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
