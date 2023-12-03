@@ -1,10 +1,10 @@
 package com.example.Demo.controller;
 
-import com.example.Demo.Dto.DonarDashboardInfoDTO;
+import com.example.Demo.Dto.InvestorDashboardInfoDTO;
 import com.example.Demo.Dto.RecordsDto;
 import com.example.Demo.Exception.NotFoundException;
-import com.example.Demo.Repository.StudentFundingRequestDetailsRepository;
-import com.example.Demo.Service.DonarDashboard;
+import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
+import com.example.Demo.Service.InvestorDashboard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +18,15 @@ import java.util.List;
 public class DonarDashboardController {
 
     @Autowired
-    DonarDashboard donarDashboard;
+    InvestorDashboard donarDashboard;
 
     @Autowired
-    StudentFundingRequestDetailsRepository studentFundingRequestDetailsRepository;
+    UserFundingRequestDetailsRepository studentFundingRequestDetailsRepository;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getAllStudents")
-    public ResponseEntity<List<DonarDashboardInfoDTO>> getAllStudentsEligibleForFunding(){
-       List<DonarDashboardInfoDTO> result= donarDashboard.getAllELigibleStudents("Uni_verified");
+    public ResponseEntity<List<InvestorDashboardInfoDTO>> getAllStudentsEligibleForFunding(){
+       List<InvestorDashboardInfoDTO> result= donarDashboard.getAllELigibleStudents("Uni_verified");
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

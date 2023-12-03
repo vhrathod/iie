@@ -1,5 +1,6 @@
 package com.example.Demo.Repository;
 
+import com.example.Demo.Dto.UserRequestProjection;
 import com.example.Demo.Entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,5 +23,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query("Select e from UserEntity e where e.username IN :username")
     List<UserEntity> findAllByUserName(@Param("username") List<String> username);
+
 }
 

@@ -4,11 +4,11 @@ import com.example.Demo.Dto.UserFundingRequestDetailsDto;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Exception.ProcessingException;
-import com.example.Demo.Repository.StudentFundingRequestDetailsRepository;
+import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
 import com.example.Demo.Repository.UniversityTouniversityEmailMapperRepository;
 import com.example.Demo.Repository.UserRepository;
 import com.example.Demo.Service.EmailService;
-import com.example.Demo.Service.StudentFundRequest;
+import com.example.Demo.Service.UserFundRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,13 +25,13 @@ public class FundRequestController {
     EmailService emailService;
 
     @Autowired
-    StudentFundingRequestDetailsRepository studentFundingRequestDetailsRepository;
+    UserFundingRequestDetailsRepository studentFundingRequestDetailsRepository;
 
     @Autowired
     UserRepository userRepository;
 
     @Autowired
-    StudentFundRequest studentFundRequest;
+    UserFundRequest studentFundRequest;
 
     @Autowired
     UniversityTouniversityEmailMapperRepository universityTouniversityEmailMapperRepository;
