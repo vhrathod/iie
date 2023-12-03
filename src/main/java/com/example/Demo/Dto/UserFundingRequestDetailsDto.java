@@ -34,6 +34,7 @@ public class UserFundingRequestDetailsDto {
      private BigDecimal fundingAmtRequired;
      private int activeUserCount;
 
+     private String investorName;
      private String fundingReason;
      private List<String> financialDoc;
      private String comment;

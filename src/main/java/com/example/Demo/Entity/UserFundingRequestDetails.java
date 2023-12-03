@@ -37,6 +37,7 @@ public class UserFundingRequestDetails {
     private BigDecimal fundingAmtRequired;
     private int activeUserCount;
 
+    private String investorName;
     private String fundingReason;
     @Lob
     private List<String> financialDoc;
@@ -67,6 +68,7 @@ public class UserFundingRequestDetails {
         dto.setStartDate(startDate);
         dto.setFundingAmtRequired(fundingAmtRequired);
         dto.setActiveUserCount(activeUserCount);
+        dto.setInvestorName(this.investorName);
         dto.setFundingReason(fundingReason);
         dto.setFinancialDoc(financialDoc);
         dto.setComment(comment);
