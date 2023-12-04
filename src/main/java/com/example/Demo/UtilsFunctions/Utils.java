@@ -1,11 +1,9 @@
 package com.example.Demo.UtilsFunctions;
 
-import com.example.Demo.Dto.UserOtp;
-
-import java.util.Random;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 public class Utils {
     public static String generateOtp(){

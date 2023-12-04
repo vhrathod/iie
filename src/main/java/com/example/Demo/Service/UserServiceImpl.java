@@ -6,7 +6,6 @@ import com.example.Demo.Dto.UserFundingRequestDetailsDto;
 import com.example.Demo.Dto.UserRequestProjection;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Entity.UserFundingRequestDetails;
-import com.example.Demo.Package.UserMapper;
 import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
 import com.example.Demo.Repository.UserRepository;
 import com.example.Demo.UtilsFunctions.Utils;

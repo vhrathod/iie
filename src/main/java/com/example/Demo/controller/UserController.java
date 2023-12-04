@@ -9,7 +9,10 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,7 +61,7 @@ public class UserController {
         UserFundingRequestDetailsDto dto=userService.getRequestByUserAndIdeaName(fetchRequest);
         return ResponseEntity.ok(dto);
     }
-    @PostMapping("/fetchRequest")
+    @PostMapping("/saveRequest")
     @SneakyThrows
     public ResponseEntity<?> saveFundRequest(@RequestBody @Valid UserFundingRequestDetailsDto dto){
         validateUserPresent(dto.getUsername());

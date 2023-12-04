@@ -1,8 +1,8 @@
 package com.example.Demo.Service;
 
 import com.example.Demo.Dto.InvestorDashboardInfoDTO;
-import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Entity.UserEntity;
+import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Exception.ProcessingException;
 import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
 import com.example.Demo.Repository.UserRepository;
@@ -47,7 +47,7 @@ public class InvestorDashboardImpl implements InvestorDashboard {
     @Override
     public void updateStudentStatus(List<String> emailId) throws ProcessingException {
         try {
-            studentFundingRequestDetailsRepository.updateStausToApproved("APPROVED", emailId);
+            //studentFundingRequestDetailsRepository.updateStatusToApproved("APPROVED", emailId);
         }catch(Exception e){
             throw new ProcessingException("Failed to update Approved status");
         }

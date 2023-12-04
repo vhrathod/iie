@@ -1,7 +1,5 @@
 package com.example.Demo.Service;
 
-import com.example.Demo.Entity.UserEntity;
-
 import javax.mail.MessagingException;
 
 public interface EmailService {
