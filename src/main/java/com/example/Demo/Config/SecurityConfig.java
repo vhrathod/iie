@@ -88,17 +88,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
 
-    @Bean
-    public CorsConfigurationSource courseConfigurationSource(){
-        CorsConfiguration corsConfiguration=new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        corsConfiguration.setAllowedMethods(Arrays.asList(CorsConfiguration.ALL));
-        corsConfiguration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
-        corsConfiguration.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source= new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",corsConfiguration);
-
-        return source;
-    }
+//    @Bean
+//    public CorsConfigurationSource courseConfigurationSource(){
+//        CorsConfiguration corsConfiguration=new CorsConfiguration();
+//        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+//        corsConfiguration.setAllowedMethods(Arrays.asList(CorsConfiguration.ALL));
+//        corsConfiguration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
+//        corsConfiguration.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source= new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**",corsConfiguration);
+//
+//        return source;
+//    }
 }
