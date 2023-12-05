@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class UserFundingRequestDetailsDto {
      private String gpaOfUser;
      @NotEmpty(message = "UserInvestmentInIdea is required")
      private String usersInvestmentInIdea; //ownerOfIdea, InvestedCapital,
-     @NotEmpty(message = "InvestedCapitalByUser is required")
+     @NotNull(message = "InvestedCapitalByUser is required")
      private BigDecimal investedCapitalByUser;
      @NotEmpty(message = "percentageOwnershipOfUser is required")
      private String percentageOwnershipOfUser;
@@ -35,7 +36,7 @@ public class UserFundingRequestDetailsDto {
      private String nameOfIdeaOrStartup;
      @NotEmpty(message = "inspirationOfIdea is required")
      private String inspirationOfIdea;
-     @NotEmpty(message = "initialCapitalInIdea is required")
+     @NotNull(message = "initialCapitalInIdea is required")
      private BigDecimal initialCapitalInIdea;
      @NotEmpty(message = "domainOfIdea is required")
      private String domainOfIdea;
@@ -49,9 +50,8 @@ public class UserFundingRequestDetailsDto {
      private String ideaDescription;
      @NotEmpty(message = "startDate is required")
      private String startDate;
-     @NotEmpty(message = "fundingAmtRequired is required")
+     @NotNull(message = "fundingAmtRequired is required")
      private BigDecimal fundingAmtRequired;
-     @NotEmpty(message = "activeUserCount is required")
      private int activeUserCount;
 
      private String investorName;

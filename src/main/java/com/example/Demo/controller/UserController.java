@@ -45,7 +45,7 @@ public class UserController {
 
     @PostMapping("/fetchAllRequest")
     @SneakyThrows
-    public ResponseEntity<List<UserRequestProjection>> fetchAllRequest(@RequestBody @Valid FetchRequest fetchRequest){
+    public ResponseEntity<List<UserRequestProjection>> fetchAllRequest(@RequestBody FetchRequest fetchRequest){
         validateUserPresent(fetchRequest.getUsername());
         List<UserRequestProjection> list=userService.getAllRequestByUsername(fetchRequest.getUsername());
         return ResponseEntity.ok(list);
@@ -53,7 +53,7 @@ public class UserController {
 
     @PostMapping("/fetchRequest")
     @SneakyThrows
-    public ResponseEntity<UserFundingRequestDetailsDto> fetchRequest(@RequestBody @Valid FetchRequest fetchRequest){
+    public ResponseEntity<UserFundingRequestDetailsDto> fetchRequest(@RequestBody  FetchRequest fetchRequest){
         validateUserPresent(fetchRequest.getUsername());
         if(fetchRequest.getNameOfIdeaOrStartup()==null && fetchRequest.getUuid()==null){
             throw new NotFoundException("NameOfIdeaOrStartup or UUID is required");
@@ -63,7 +63,7 @@ public class UserController {
     }
     @PostMapping("/saveRequest")
     @SneakyThrows
-    public ResponseEntity<?> saveFundRequest(@RequestBody @Valid UserFundingRequestDetailsDto dto){
+    public ResponseEntity<?> saveFundRequest(@RequestBody UserFundingRequestDetailsDto dto){
         validateUserPresent(dto.getUsername());
         dto=userService.saveFundRequest(dto);
         return ResponseEntity.ok(dto);
