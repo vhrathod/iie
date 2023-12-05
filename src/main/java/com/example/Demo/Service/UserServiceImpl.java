@@ -1,9 +1,6 @@
 package com.example.Demo.Service;
 
-import com.example.Demo.Dto.FetchRequest;
-import com.example.Demo.Dto.UserDto;
-import com.example.Demo.Dto.UserFundingRequestDetailsDto;
-import com.example.Demo.Dto.UserRequestProjection;
+import com.example.Demo.Dto.*;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Entity.UserFundingRequestDetails;
 import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
@@ -72,6 +69,26 @@ public class UserServiceImpl implements UserService {
     public UserFundingRequestDetailsDto saveFundRequest(UserFundingRequestDetailsDto dto) {
         UserFundingRequestDetails userFundingRequestDetails=dto.toEntity();
         return userFundingRequestDetailsRepository.save(userFundingRequestDetails).toDto();
+    }
+
+    @Override
+    public String updateUserFundingReq(InvestorUpdateOnFundingReq dto) {
+        UserFundingRequestDetails userFundingRequestDetails;
+        if(dto.getNameOfIdeaOrStartup()!=null && dto.getUuidOfIdea()!=null){
+            userFundingRequestDetails=userFundingRequestDetailsRepository.findByNameOfIdeaOrStartupAndUuid(
+                    dto.getNameOfIdeaOrStartup(),dto.getUuidOfIdea());
+        } else if (dto.getNameOfIdeaOrStartup()!=null) {
+            userFundingRequestDetails=userFundingRequestDetailsRepository.findByNameOfIdeaOrStartup(
+                    dto.getNameOfIdeaOrStartup());
+        }else {
+            userFundingRequestDetails=userFundingRequestDetailsRepository.findByUuid(dto.getUuidOfIdea());
+        }
+        userFundingRequestDetails.setInvestorName(dto.getInvestorName());
+        userFundingRequestDetails.setComment(dto.getComment());
+        userFundingRequestDetails.setRatingFrom5(dto.getRatingFrom5());
+        userFundingRequestDetails.setEligibleAmtByInvestor(dto.getEligibleAmtByInvestor());
+        userFundingRequestDetailsRepository.save(userFundingRequestDetails);
+        return "Investor inputs are recorded successfully";
     }
 
 

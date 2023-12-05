@@ -71,11 +71,19 @@ public class UserController {
         return ResponseEntity.ok(dto);
     }
 
+    @PostMapping("/saveRequest")
+    @SneakyThrows
+    public ResponseEntity<?> updateUserFundingReq(@RequestBody InvestorUpdateOnFundingReq dto){
+        String res=userService.updateUserFundingReq(dto);
+        return ResponseEntity.ok(res);
+    }
 
     @SneakyThrows
     private void validateUserPresent(String username)  {
         userRepository.findByUsername(username).orElseThrow(
                 ()->new NotFoundException("User not found with username - "+ username));
     }
+
+
 
 }

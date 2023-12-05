@@ -17,4 +17,5 @@ public class UserEntity {
     String phoneNumber;
     String otp;
     String name;
+    private boolean isActive;
 }

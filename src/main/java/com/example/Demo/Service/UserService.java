@@ -1,9 +1,6 @@
 package com.example.Demo.Service;
 
-import com.example.Demo.Dto.FetchRequest;
-import com.example.Demo.Dto.UserDto;
-import com.example.Demo.Dto.UserFundingRequestDetailsDto;
-import com.example.Demo.Dto.UserRequestProjection;
+import com.example.Demo.Dto.*;
 
 import java.util.List;
 
@@ -16,4 +13,6 @@ public interface UserService {
     UserFundingRequestDetailsDto getRequestByUserAndIdeaName(FetchRequest fetchRequest);
 
     UserFundingRequestDetailsDto saveFundRequest(UserFundingRequestDetailsDto dto);
+
+    String updateUserFundingReq(InvestorUpdateOnFundingReq dto);
 }

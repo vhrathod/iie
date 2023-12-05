@@ -72,7 +72,7 @@ public class UserFundingRequestDetails {
         dto.setFundingReason(fundingReason);
         dto.setFinancialDoc(financialDoc);
         dto.setComment(comment);
-        dto.setStatus (status );
+        dto.setStatus(status);
         dto.setEligibleAmtByInvestor(eligibleAmtByInvestor);
         dto.setRatingFrom5(ratingFrom5);
         return dto;

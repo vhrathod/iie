@@ -1,16 +1,20 @@
 package com.example.Demo.Service;
 
 import com.example.Demo.Dto.InvestorDashboardInfoDTO;
+import com.example.Demo.Dto.InvestorToApprove;
 import com.example.Demo.Entity.UserEntity;
 import com.example.Demo.Entity.UserFundingRequestDetails;
+import com.example.Demo.Exception.NotFoundException;
 import com.example.Demo.Exception.ProcessingException;
 import com.example.Demo.Repository.UserFundingRequestDetailsRepository;
 import com.example.Demo.Repository.UserRepository;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,12 +49,29 @@ public class InvestorDashboardImpl implements InvestorDashboard {
     }
 
     @Override
-    public void updateStudentStatus(List<String> emailId) throws ProcessingException {
+    @SneakyThrows
+    public void updateStudentStatus(List<String> emailId)  {
         try {
             //studentFundingRequestDetailsRepository.updateStatusToApproved("APPROVED", emailId);
         }catch(Exception e){
             throw new ProcessingException("Failed to update Approved status");
         }
+    }
+
+    @Override
+    public List<InvestorToApprove> getAllInvestorToApprove() {
+        return userRepository.findProjByRole("ROLE_INVESTOR");
+    }
+
+    @Override
+    @SneakyThrows
+    public String approveInvestor(String username) {
+        UserEntity userEntity=userRepository.findByUsername(username).orElseThrow(
+                ()->new NotFoundException("User Not found")
+        );
+        userEntity.setActive(true);
+        userRepository.save(userEntity);
+        return "Approved successfully.";
     }
 
 }
