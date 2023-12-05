@@ -16,13 +16,13 @@ public class DemoApplication {
 	}
 
 
-	@Bean
-	public WebMvcConfigurer configurer(){
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry reg){
-				reg.addMapping("/**").allowedOrigins("http://localhost").allowedMethods("*");
-			}
-		};
-	}
+//	@Bean
+//	public WebMvcConfigurer configurer(){
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry reg){
+//				reg.addMapping("/**").allowedOrigins("**").allowedMethods("*");
+//			}
+//		};
+//	}
 }
